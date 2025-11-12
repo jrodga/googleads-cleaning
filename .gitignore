@@ -1,0 +1,15 @@
+```gitignore
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (optional – keep big/private data out of Git)
+data/processed/
+data/raw/
+
+# OS
+.DS_Store
