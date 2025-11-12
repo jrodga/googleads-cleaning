@@ -66,6 +66,7 @@ print("Shape:", df_raw.shape)
 df_raw.head()
 
 ```
+![Preview](docs/images/preview.png)
 **What we are doing:** simply checking what is inside the file so we can decide which columns to use.
 ##
 ## Cell 3 — Make all column names lowercase and rename "conversion rate" → "conversion_rate"
@@ -84,7 +85,7 @@ print("Columns:", list(df.columns))
 df.head()
 
 ```
-
+![New Headers](docs/images/new_headers.png)
 
 **Why this matters:** consistent names make the rest of the code easier to read and reuse.
 
@@ -198,8 +199,9 @@ df = df.dropna(subset=["ad_date"])
 df.head()
 
 ```
+![New dates](docs/images/new_dates.png)
 ##
-## Cell 6 — Clean numeric fields (with clear explanations)
+## Cell 6 — Clean numeric fields 
 
 Goal:
 Turn money text (like “£1,234.56” or “$2,000”) into numbers, make sure impressions, clicks, conversions are numeric, and remove impossible negatives.
@@ -207,7 +209,6 @@ We assume your file already uses the exact column names `cost` and `sale_amount`
 
 
 ```python
-
 
 def to_float_money(x):
     """
@@ -261,7 +262,7 @@ for c in ["impressions", "clicks", "conversions", "cost", "sale_amount"]:
         df.loc[df[c] < 0, c] = np.nan
 
 
-# --- Quick sanity checks (safe to keep for beginners) ---
+# --- Quick sanity checks  ---
 
 # 1) Show the dtypes so you can confirm numbers really are numeric (int/float)
 print("\nColumn types after cleaning:")
@@ -274,6 +275,7 @@ for c in ["impressions", "clicks", "conversions", "cost", "sale_amount"]:
 
 
 ```
+![new numerical values](docs/images/new_numerical_values.png)
 ##
 ## Cell 7 — Compute KPIs, add ROAS
 
@@ -307,6 +309,8 @@ df[["ad_date"] + [c for c in ["impressions","clicks","cost","sale_amount","ctr",
 
 ```
 ##
+
+![kpis](docs/images/kpis.png)
 ## Cell 8 - Aggregate to daily (and optional breakouts)
 
 **Why aggregate to daily?**
@@ -382,7 +386,7 @@ print("Daily rows:", len(daily))
 daily.head()
 
 ```
-
+![daily](docs/images/daily.png)
 **What those pandas bits mean**
 
 - `groupby(group_keys, as_index=False)`: “Bundle” all rows that share the same `ad_date` (and any optional keys) into groups; keep the keys as normal columns (not as an index).
@@ -406,7 +410,7 @@ plt.savefig(IMG_CTR, dpi=150)
 plt.show()
 
 ```
-
+![ctr over time](docs/images/ctr_over_time.png)
 - Beacuse is really noise in the last two month we are goin to drill a bit :
 
 ```python
@@ -533,3 +537,4 @@ Actions it informs:
 - Test broader audiences, new keywords, or higher quality scores to push out the saturation point.
 
 - Pair with CPC/ROAS to prioritise the most efficient spend.
+
