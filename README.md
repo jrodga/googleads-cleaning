@@ -410,7 +410,7 @@ plt.savefig(IMG_CTR, dpi=150)
 plt.show()
 
 ```
-![ctr over time](docs/images/ctr_over_time.png)
+![ctr over time](docs/images/ctr_over_time_noise.png)
 - Beacuse is really noise in the last two month we are goin to drill a bit :
 
 ```python
@@ -456,6 +456,7 @@ plt.show()
 # fig.savefig("../docs/images/ctr_zoom_nov_dec.png", dpi=150)
 
 ```
+![ctr over time](docs/images/ctr_over_time.png)
 ##
 ## Cell 10 **Spend vs Clicks**
 **Why**: see whether higher spend is associated with more clicks.
@@ -474,8 +475,8 @@ if {"cost", "clicks"}.issubset(daily.columns):
 else:
     print("Cost or clicks not available to plot.")
 
-
 ```
+![spend vs clicks](docs/images/spend_vs_clicks.png)
 ##
 ## Cell 11 - Save the cleaned daily CSV
 **Why:** Reuse the output in dashboards or future notebooks
@@ -537,4 +538,5 @@ Actions it informs:
 - Test broader audiences, new keywords, or higher quality scores to push out the saturation point.
 
 - Pair with CPC/ROAS to prioritise the most efficient spend.
+
 
